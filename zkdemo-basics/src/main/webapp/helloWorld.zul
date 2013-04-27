@@ -1,1 +1,5 @@
-<window title="Hello World ZK" border="normal"/>
+<window title="Hello World ZK" border="normal" width="245px" >
+	<calendar onChange="selectedDate.setValue(self.getValue().toString())" />
+	<label id="selectedDate" />
+</window>
+
