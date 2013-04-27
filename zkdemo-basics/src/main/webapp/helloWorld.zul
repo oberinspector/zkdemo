@@ -1,5 +1,25 @@
-<window title="Hello World ZK" border="normal" width="245px" >
-	<calendar onChange="selectedDate.setValue(self.getValue().toString())" />
-	<label id="selectedDate" />
-</window>
+<zul:zk xmlns="http://www.zkoss.org/2005/zk/native"
+  xmlns:zhtml="http://www.w3.org/1999/xhtml"
+  xmlns:zul="http://www.zkoss.org/2005/zul">
 
+  <zul:window id="helloWorldWindow" width="800px">
+    <zul:hbox>
+      <ul
+        style="margin:20px 20px 20px 0px; list-style: none outside none;">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#p1">Page 3</a></li>
+        <li><a href="#p2">Page 3</a></li>
+        <li><a href="#p3">Page 3</a></li>
+      </ul>
+      <zhtml:div id="content" style="margin:20px" sclass="contentDiv">
+        <h1>ZK History</h1>
+        <p>First version 1.0 of ZK was released 2006...</p>
+        <p>
+          and... who has selected the Date:
+          <zul:label id="selectedDate">- Nothing selected -</zul:label>?
+        </p>
+      </zhtml:div>
+      <zul:calendar style="margin:20px" />
+    </zul:hbox>
+  </zul:window>
+</zul:zk>
