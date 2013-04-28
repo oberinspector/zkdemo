@@ -2,7 +2,7 @@
   xmlns:zhtml="http://www.w3.org/1999/xhtml"
   xmlns:zul="http://www.zkoss.org/2005/zul">
 
-  <zul:window id="helloWorldWindow" width="800px">
+  <zul:window id="helloWorldWindow" apply="net.empego.composer.ZKBasicsWebappComposer">
     <zul:hbox>
       <ul
         style="margin:20px 20px 20px 0px; list-style: none outside none;">
@@ -19,7 +19,7 @@
           <zul:label id="selectedDate">- Nothing selected -</zul:label>?
         </p>
       </zhtml:div>
-      <zul:calendar style="margin:20px" />
+      <zul:calendar id="calendar" style="margin:20px" />
     </zul:hbox>
   </zul:window>
 </zul:zk>
