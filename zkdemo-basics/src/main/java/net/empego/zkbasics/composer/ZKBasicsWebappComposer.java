@@ -13,12 +13,10 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.BookmarkEvent;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
-import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Calendar;
 import org.zkoss.zul.Label;
 
-@VariableResolver(org.zkoss.zkplus.cdi.DelegatingVariableResolver.class)
 public class ZKBasicsWebappComposer extends SelectorComposer<Component> {
 
 	private static final long serialVersionUID = 8338613318454037425L;
@@ -37,32 +35,32 @@ public class ZKBasicsWebappComposer extends SelectorComposer<Component> {
 
 	Date now = new Date();
 
-	@Listen("onChange=#calendar")
+	/**
+	 * Eventhandler wird aufgerufen wenn in Calendar Componente ein Datum selektiert wird
+	 */
+	@Listen("onChange=#calendar") // 1. Registrieren des Eventhandlers
 	public void updateSelectedDateLabel() {
-		Date calendarValue = calendar.getValue();
+		Date calendarValue = calendar.getValue(); // 2. Selektiertes Datum auslesen
+		if (calendarValue != null && calendarValue.after(now)) { // 3. Businesslogik: 
+			// Werte in der Zukunft rot und fett markieren
+			selectedDate.setStyle("color:red; font-weight:bold;");
+		} else {
+			selectedDate.setStyle("");
+		}
 		selectedDate.setValue(calendarValue.toString());
-		doSomethingImportantWithSelectedDate(calendarValue);
 	}
 
 	@Listen("onBookmarkChange=#helloWorldWindow")
 	public void reloadContent(BookmarkEvent event) {
 		String bookmark = event.getBookmark();
-		Object newContent = contentService.getContent(bookmark);
+		String newContent = contentService.getContent(bookmark);
 		if (newContent != null) {
 			content.getChildren().clear(); // clear content div
-			Executions.getCurrent().createComponentsDirectly(
-					(String) newContent, null, content, null);
+			Executions.getCurrent().createComponentsDirectly(newContent, null,
+					content, null);
 		}
 	}
 
-	private void doSomethingImportantWithSelectedDate(Date calendarValue) {
-		if (calendarValue != null && calendarValue.after(now)) {
-			// mark dates in the future in red
-			selectedDate.setStyle("color:red; font-weight:bold;");
-		} else {
-			selectedDate.setStyle("");
-		}
-	}
 
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {

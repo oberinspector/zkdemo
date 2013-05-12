@@ -1,0 +1,6 @@
+<zk>
+  <library-property>
+    <name>org.zkoss.zkplus.cdi.beanManager.jndiName</name>
+    <value>java:comp/BeanManager</value>
+  </library-property>
+</zk>
