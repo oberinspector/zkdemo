@@ -4,15 +4,7 @@
 
   <zul:window id="helloWorldWindow"  apply="net.empego.zkbasics.composer.ZKBasicsWebappComposer">
     <zul:hbox>
-      <div class="topnav">
-        <ul
-          style="margin:20px 20px 20px 0px; list-style: none outside none;">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#p1">Page 1</a></li>
-          <li><a href="#p2">Page 2</a></li>
-          <li><a href="#p3">Page 3</a></li>
-        </ul>
-      </div>
+      <zul:div class="topnav" use="net.empego.zkbasics.component.Ulnavigation" />
       <zhtml:div id="content" style="margin:20px" sclass="contentDiv">
         <h1>ZK History</h1>
         <p>First version 1.0 of ZK was released 2006...</p>

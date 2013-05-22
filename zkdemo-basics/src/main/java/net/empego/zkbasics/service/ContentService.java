@@ -2,11 +2,20 @@ package net.empego.zkbasics.service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.ejb.Stateless;
 
 @Stateless
 public class ContentService {
+	
+	/**
+	 * Get menu entries from content Store
+	 * @return
+	 */
+	public Set<String>getMenu(){
+		return contentStore.keySet();
+	}
 	
 	private Map<String, String>contentStore = new HashMap<String, String>();
 	{
